@@ -1,0 +1,71 @@
+"========================================================
+"Highlight All Function
+"========================================================
+syn match   cFunction "\<[a-zA-Z_][a-zA-Z_0-9]*\>[^()]*)("me=e-2
+syn match   cFunction "\<[a-zA-Z_][a-zA-Z_0-9]*\>\s*("me=e-1
+hi cFunction   gui=NONE guifg=#B5A1FF
+"========================================================
+"Highlight All Math Operator
+"========================================================
+"C math operators
+syn match cMathOperator display "[-+\*/%=]"
+"C pointer operators
+syn match cPointerOperator display "->\|\."
+"C logical operators - boolean results
+syn match cLogicalOperator display "[!<>]=\="
+syn match cLogicalOperator display "=="
+"C bit operators
+syn match  cBinaryOperator  display "\(&\||\|\^\|<<\|>>\)=\="
+syn match cBinaryOperator   display "\~"
+syn match cBinaryOperatorError display "\~="
+"More C logical operators - highlight in preference to binary
+syn match cLogicalOperator display "&&\|||"
+syn match cLogicalOperatorError display "\(&&\|||\)="
+
+"Math Operator
+hi cMathOperator  guifg=#3EFFE2 ctermfg=lightyellow 
+hi cPointerOperator   guifg=#3EFFE2 ctermfg=lightyellow 
+hi cLogicalOperator   guifg=#3EFFE2 ctermfg=lightyellow 
+hi cBinaryOperator    guifg=#3EFFE2 ctermfg=lightyellow 
+hi cBinaryOperatorError   guifg=#3EFFE2 ctermfg=lightyellow 
+hi cLogicalOperator   guifg=#3EFFE2 ctermfg=lightyellow 
+hi cLogicalOperatorError guifg=#3EFFE2 ctermfg=lightyellow 
+
+
+
+"------------------------ further work ------------------------
+hi cType ctermfg=green
+hi cConditional ctermfg=lightred
+hi cRepeat ctermfg=lightred
+hi cStatement ctermfg=lightred
+hi cLabel ctermfg=lightred
+hi cType ctermfg=green
+hi cDefine ctermfg=magenta
+hi cUndefine ctermfg=magenta
+hi cFunction ctermfg=blue
+
+"----------------------- 以下的是备查而已 ------------------------
+" hi other words later
+" C language keywords.
+" For compilers with asm keyword - error if not c_c_vim_compatible.
+syn keyword   cKRStatement        asm
+syn keyword   cGNUStatement   __asm__
+syn keyword   cLabel   case default
+syn keyword   cConditional     if else switch
+syn keyword   cRepeat  while for do
+
+" C data types
+syn keyword   c89Type  int long short char void signed unsigned float double
+" These are actually macros that expand to the above.
+syn keyword    c99Type     bool complex imaginary
+syn keyword    cGnuType    __label__ __complex__ __volatile__
+
+" C language structures
+syn keyword    cStructureType  typedef
+syn keyword    cStructure struct union enum
+
+" C storage modifiers
+syn keyword    c89StorageClass     static register auto volatile extern const
+syn keyword   cKRStorageClass  fortran
+syn keyword   c99StorageClass  restrict inline
+syn keyword   cGNUStorageClass __attribute__

@@ -1,0 +1,18 @@
+WIKI-NAME
+
+Chen Rui
+
+
+%!includeconf: config.t2t
+%!postproc: '(?i)(</title>)'    ' <>\1'
+%!postproc: '(?i)(<body)'   '\1 id="<>"'
+%!include: menu.t2t
+
+% start body
+<Body>
+% end body
+% make two blank lines, don't remove them
+
+
+%!include: footer.t2t
+
